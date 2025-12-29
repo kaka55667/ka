@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流量卡申请</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background-color: #1E90FF;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .filters {
+            padding: 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .filter-section {
+            margin-bottom: 15px;
+        }
+        
+        .filter-section h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background-color: #fff;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background-color: #1E90FF;
+            color: #fff;
+            border-color: #1E90FF;
+        }
+        
+        .cards-container {
+            padding: 15px;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+        
+        /* 不同运营商卡片背景色 */
+        .card.carrier-电信 {
+            background-color: #f0f8ff;
+        }
+        
+        .card.carrier-联通 {
+            background-color: #faf0e6;
+        }
+        
+        .card.carrier-移动 {
+            background-color: #f5fff5;
+        }
+        
+        .card.carrier-广电 {
+            background-color: #fff5f5;
+        }
+        
+        /* 置顶标识样式 */
+        .card-sticky {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff5722;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 5;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-header {
+            background-color: transparent;
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .card-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .card-features {
+            display: none;
+        }
+        
+        .card-feature {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 5px 10px;
+            background-color: #e3f2fd;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #1976d2;
+        }
+        
+        .card-feature.optional-number {
+            background-color: #ffebee;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        .card-data {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: transparent;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 0;
+        }
+        
+        .card-data.second-row {
+            margin-top: 0;
+            border-top: 1px dashed #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .data-item {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+        }
+        
+        .card-info {
+            padding: 0 15px 15px;
+        }
+        
+        .data-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .data-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .card-info {
+            padding: 15px;
+            background-color: transparent;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .info-label {
+            color: #666;
+        }
+        
+        .info-value {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .card-footer {
+            padding: 15px;
+            background-color: transparent;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .apply-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #FF6B6B;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background-color: #FF5252;
+        }
+        
+        .footer {
+            padding: 15px;
+            background-color: #f5f5f5;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .notice {
+            background-color: #FFF3CD;
+            color: #856404;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        /* 省份列表样式 */
+        .province-list {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .province-options {
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 5px 0;
+        }
+        
+        /* 仅发省份按钮展开状态 */
+        .filter-btn[data-filter="仅发省份"].expanded::after {
+            content: ' ▼';
+        }
+        
+        .filter-btn[data-filter="仅发省份"]::after {
+            content: ' ▶';
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        /* 可选号和不可选号样式 */
+        .ke {
+            display: inline-block;
+            margin-right: 15px;
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #ffebee;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        .buke {
+            display: inline-block;
+            margin-right: 15px;
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #e3f2fd;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #1976d2;
+            font-weight: bold;
+        }
+        
+        /* 调整信息行对齐方式 */
+        .info-row {
+            justify-content: flex-start;
+        }
+        
+        .info-value {
+            margin-left: 10px;
+        }
+        
+        /* 轮播图样式 */
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            /* 移除绝对定位，使用相对定位 */
+            position: relative;
+        }
+        
+        .carousel-slide {
+            /* 移除绝对定位，使用显示/隐藏控制 */
+            display: none;
+        }
+        
+        .carousel-slide:first-child {
+            display: block;
+        }
+        
+        .carousel-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background-color: #fff;
+            transform: scale(1.2);
+        }
+        
+        /* 左右切换按钮样式 */
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-prev:hover, .carousel-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .carousel-prev {
+            left: 10px;
+        }
+        
+        .carousel-next {
+            right: 10px;
+        }
+        
+        @media (min-width: 600px) {
+            .container {
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>信通整理文档页（客服：xintong55667）</h1>
+        </div>
+        
+        <!-- 轮播图 -->
+        <div class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-slide" style="display: block;">
+                    <img src="img/v.jpg" alt="轮播图1" class="carousel-image">
+                </div>
+                <div class="carousel-slide" style="display: none;">
+                    <img src="img/地址.jpg" alt="轮播图2" class="carousel-image">
+                </div>
+            </div>
+            <!-- 左右切换按钮 -->
+            <button class="carousel-prev">&lt;</button>
+            <button class="carousel-next">&gt;</button>
+            <!-- 指示器 -->
+            <div class="carousel-indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-section">
+                <h3>运营商筛选</h3>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all" data-type="carrier">全部</button>
+                    <button class="filter-btn" data-filter="电信" data-type="carrier">电信</button>
+                    <button class="filter-btn" data-filter="联通" data-type="carrier">联通</button>
+                    <button class="filter-btn" data-filter="移动" data-type="carrier">移动</button>
+                    <button class="filter-btn" data-filter="广电" data-type="carrier">广电</button>
+                    <button class="filter-btn" data-filter="会员卡" data-type="carrier">会员卡</button>
+                    <button class="filter-btn" data-filter="可办副卡" data-type="carrier">可办副卡</button>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3>地区筛选</h3>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all" data-type="region">全部</button>
+                    <button class="filter-btn" data-filter="全国可发" data-type="region">全国可发</button>
+                    <button class="filter-btn" data-filter="仅发省份" data-type="region">仅发省份</button>
+                </div>
+                <!-- 省份下拉列表 -->
+                <div class="province-list" id="provinceList" style="display: none;">
+                    <div class="filter-options province-options">
+                        <!-- 省份按钮将通过JavaScript动态添加 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cards-container" id="cardsContainer">
+            <!-- 电信卡 -->
+            <div class="card carrier-电信" data-carrier="电信" data-region="全国可发">
+                <div class="card-header">
+                    <h3 class="card-title">全国电信1️</h3>
+                    <div class="card-subtitle">29元/月享50G通用流量+30G定向流量+0.1元/分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥29</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">155G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">30G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0.1元</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">随机</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">全国可发</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：</span>
+                        <span class="info-value">激活30天后叠加185G，如遇到运营商打电话咨询需回答办理的是80G</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2260" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+            
+            <div class="card carrier-电信" data-carrier="电信" data-region="仅发省份" data-province="湖南">
+                <div class="card-header">
+                    <h3 class="card-title">湖南电信</h3>
+                    <div class="card-subtitle">29元/月享50G通用流量+30G定向流量+0.1元/分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥29</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">155G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">30G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0.1元</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">湖南</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发湖南</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：</span>
+                        <span class="info-value">激活30天后叠加185G，如遇到运营商打电话咨询需回答办理的是80G</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2241" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+
+             <div class="card carrier-电信" data-carrier="电信" data-region="仅发省份" data-province="湖南">
+                <div class="card-header">
+                    <h3 class="card-title">浙江电信</h3>
+                    <div class="card-subtitle">19元/月享50G通用流量+30G定向流量+300分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥19</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">115G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">30G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">300</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">浙江</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发浙江</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：</span>
+                        <span class="info-value">半年19，之后长期29</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2301" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+            
+            <!-- 联通卡 -->
+           
+            
+            <div class="card carrier-联通" data-carrier="联通" data-region="仅发省份" data-province="广东">
+                <div class="card-header">
+                    <h3 class="card-title">联通-仅发广东</h3>
+                    <div class="card-subtitle">38元/月享260G通用流量+100分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥38</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">260G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">100</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">广东</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发广东</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">16-65周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2290" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+            
+            <!-- 移动卡 -->
+            <div class="card carrier-移动 " data-carrier="移动" data-region="仅发省份" data-province="广东">
+                <div class="card-sticky">置顶</div>
+                <div class="card-header">
+                    <h3 class="card-title">移动-仅发广州深圳佛山</h3>
+                    <div class="card-subtitle">29元/月享120G通用流量+30G定向流量+100分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥29</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">120G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">30G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">100</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">广东</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发广东</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-30周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2222" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+            
+           
+            
+            <!-- 广电卡 -->
+            <div class="card carrier-广电  secondary-card" data-carrier="广电" data-region="全国可发">
+                <div class="card-header">
+                    <h3 class="card-title">广电卡<span class="ke">可选号</span></h3>
+                    <div class="card-subtitle">29元/月享129G通用流量+0.15元/分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥29</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">129G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0.15元</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">本地归属</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">全国可发</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2292" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+            
+           
+        
+        <div class="footer">
+            <p>© 信通直供套餐 | 客服企业微信号：xintong55667</p>
+        </div>
+    </div>
+    
+    <script>
+        // 中国省份列表
+        const provinces = [
+            '北京', '天津', '上海', '重庆',
+            '河北', '山西', '辽宁', '吉林', '黑龙江',
+            '江苏', '浙江', '安徽', '福建', '江西', '山东',
+            '河南', '湖北', '湖南', '广东', '海南',
+            '四川', '贵州', '云南', '陕西', '甘肃', '青海',
+             '内蒙古', '广西', '西藏',
+            '宁夏', '新疆'
+        ];
+        
+        // 筛选功能
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+        const provinceList = document.getElementById('provinceList');
+        const provinceOptions = document.querySelector('.province-options');
+        const onlyProvinceBtn = document.querySelector('[data-filter="仅发省份"]');
+        
+        let currentFilters = {
+            carrier: 'all',
+            region: 'all',
+            province: 'all'
+        };
+        
+        // 初始化省份按钮
+        function initProvinceButtons() {
+            // 添加"全部省份"按钮
+            const allProvinceBtn = document.createElement('button');
+            allProvinceBtn.className = 'filter-btn active';
+            allProvinceBtn.dataset.filter = 'all';
+            allProvinceBtn.dataset.type = 'province';
+            allProvinceBtn.textContent = '全部省份';
+            provinceOptions.appendChild(allProvinceBtn);
+            
+            // 添加各个省份按钮
+            provinces.forEach(province => {
+                const provinceBtn = document.createElement('button');
+                provinceBtn.className = 'filter-btn';
+                provinceBtn.dataset.filter = province;
+                provinceBtn.dataset.type = 'province';
+                provinceBtn.textContent = province;
+                provinceOptions.appendChild(provinceBtn);
+            });
+            
+            // 为省份按钮添加点击事件
+            document.querySelectorAll('[data-type="province"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const type = btn.dataset.type;
+                    const filter = btn.dataset.filter;
+                    
+                    // 更新当前筛选条件
+                    currentFilters[type] = filter;
+                    
+                    // 更新按钮状态
+                    document.querySelectorAll(`[data-type="${type}"]`).forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    btn.classList.add('active');
+                    
+                    // 收起省份列表
+                    onlyProvinceBtn.classList.remove('expanded');
+                    provinceList.style.display = 'none';
+                    
+                    // 如果选择的不是全部省份，更改仅发省份按钮的文字
+                    if (filter !== 'all') {
+                        onlyProvinceBtn.textContent = filter;
+                        // 更新按钮的data-filter属性，以便后续筛选能正确识别
+                        onlyProvinceBtn.dataset.filter = filter;
+                    }
+                    
+                    // 筛选卡片
+                    filterCards();
+                });
+            });
+        }
+        
+        // 初始化
+        initProvinceButtons();
+        
+        // 轮播图功能
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        // 初始化轮播图
+        function initCarousel() {
+            // 自动播放，增加切换间隔到5秒
+            slideInterval = setInterval(nextSlide, 5000);
+            
+            // 指示器点击事件
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    currentSlide = parseInt(indicator.dataset.index);
+                    showSlide(currentSlide);
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+            });
+            
+            // 左右切换按钮事件
+            document.querySelector('.carousel-prev').addEventListener('click', () => {
+                clearInterval(slideInterval);
+                prevSlide();
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+            
+            document.querySelector('.carousel-next').addEventListener('click', () => {
+                clearInterval(slideInterval);
+                nextSlide();
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+        
+        // 显示指定幻灯片
+        function showSlide(index) {
+            // 隐藏所有幻灯片
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+            
+            // 移除所有指示器的active类
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            // 显示当前幻灯片
+            slides[index].style.display = 'block';
+            
+            // 添加当前指示器的active类
+            indicators[index].classList.add('active');
+        }
+        
+        // 上一张幻灯片
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // 下一张幻灯片
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // 初始化轮播图
+        initCarousel();
+        
+        // 置顶卡片功能
+        function stickyCards() {
+            const cardsContainer = document.getElementById('cardsContainer');
+            const cards = Array.from(cardsContainer.querySelectorAll('.card'));
+            
+            // 分离置顶卡片和普通卡片
+            const stickyCards = cards.filter(card => card.querySelector('.card-sticky'));
+            const normalCards = cards.filter(card => !card.querySelector('.card-sticky'));
+            
+            // 清空容器
+            cardsContainer.innerHTML = '';
+            
+            // 先添加置顶卡片，再添加普通卡片
+            stickyCards.forEach(card => cardsContainer.appendChild(card));
+            normalCards.forEach(card => cardsContainer.appendChild(card));
+        }
+        
+        // 初始化时执行置顶功能
+        stickyCards();
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                let filter = btn.dataset.filter;
+                
+                // 处理"仅发省份"按钮的点击事件
+                if (type === 'region') {
+                    if (filter === '仅发省份') {
+                        // 如果当前显示的是省份名称，点击则恢复为"仅发省份"
+                        if (btn.textContent !== '仅发省份') {
+                            btn.textContent = '仅发省份';
+                            btn.dataset.filter = '仅发省份';
+                            // 更新省份筛选条件为全部
+                            currentFilters.province = 'all';
+                            // 重置省份按钮状态
+                            document.querySelectorAll('[data-type="province"]').forEach(b => {
+                                b.classList.remove('active');
+                            });
+                            document.querySelector('[data-type="province"][data-filter="all"]').classList.add('active');
+                        }
+                        // 展开/折叠省份列表
+                        onlyProvinceBtn.classList.toggle('expanded');
+                        provinceList.style.display = provinceList.style.display === 'none' ? 'block' : 'none';
+                    } else {
+                        // 其他地区筛选条件，隐藏省份列表
+                        onlyProvinceBtn.classList.remove('expanded');
+                        provinceList.style.display = 'none';
+                        // 如果仅发省份按钮显示的是省份名称，恢复为"仅发省份"
+                        if (onlyProvinceBtn.textContent !== '仅发省份') {
+                            onlyProvinceBtn.textContent = '仅发省份';
+                            onlyProvinceBtn.dataset.filter = '仅发省份';
+                            // 更新省份筛选条件为全部
+                            currentFilters.province = 'all';
+                            // 重置省份按钮状态
+                            document.querySelectorAll('[data-type="province"]').forEach(b => {
+                                b.classList.remove('active');
+                            });
+                            document.querySelector('[data-type="province"][data-filter="all"]').classList.add('active');
+                        }
+                    }
+                } else {
+                    // 其他类型的筛选条件，隐藏省份列表
+                    onlyProvinceBtn.classList.remove('expanded');
+                    provinceList.style.display = 'none';
+                }
+                
+                // 更新当前筛选条件
+                currentFilters[type] = filter;
+                
+                // 更新按钮状态
+                document.querySelectorAll(`[data-type="${type}"]`).forEach(b => {
+                    b.classList.remove('active');
+                });
+                btn.classList.add('active');
+                
+                // 筛选卡片
+                filterCards();
+            });
+        });
+        
+        function filterCards() {
+            cards.forEach(card => {
+                const carrier = card.dataset.carrier;
+                const region = card.dataset.region;
+                const cardProvince = card.dataset.province || '全国';
+                
+                let matchCarrier = currentFilters.carrier === 'all';
+                
+                // 运营商筛选逻辑，包括新添加的会员卡和可办副卡
+                if (!matchCarrier) {
+                    if (currentFilters.carrier === '会员卡') {
+                        matchCarrier = card.classList.contains('member-card');
+                    } else if (currentFilters.carrier === '可办副卡') {
+                        matchCarrier = card.classList.contains('secondary-card');
+                    } else {
+                        matchCarrier = carrier === currentFilters.carrier;
+                    }
+                }
+                
+                let matchRegion = true;
+                
+                // 地区筛选逻辑
+                if (currentFilters.region === 'all') {
+                    matchRegion = true;
+                } else if (currentFilters.region === '全国可发') {
+                    matchRegion = region === '全国可发';
+                } else if (currentFilters.region === '仅发省份') {
+                    // 仅发省份时，检查是否匹配当前省份筛选
+                    matchRegion = region === '仅发省份';
+                    if (matchRegion && currentFilters.province !== 'all') {
+                        matchRegion = cardProvince === currentFilters.province;
+                    }
+                }
+                
+                if (matchCarrier && matchRegion) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // 筛选后重新执行置顶功能
+            stickyCards();
+        }
+    </script>
+</body>
+</html>
