@@ -29,7 +29,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
         
-        。container {
+        .container {
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
@@ -298,11 +298,13 @@
         }
         
         /* 仅发省份按钮展开状态 */
-        .filter-btn[data-filter="仅发省份"].expanded::after {
+        .filter-btn[data-filter="仅发省份"].expanded::after,
+        .filter-btn[data-filter="全部省份"].expanded::after {
             content: ' ▼';
         }
         
-        .filter-btn[data-filter="仅发省份"]::after {
+        .filter-btn[data-filter="仅发省份"]::after,
+        .filter-btn[data-filter="全部省份"]::after {
             content: ' ▶';
             font-size: 11px;
             margin-left: 4px;
@@ -633,7 +635,7 @@
              <div class="card carrier-电信" data-carrier="电信" data-region="仅发省份" data-province="湖南">
                 <div class="card-header">
                     <h3 class="card-title">浙江电信</h3>
-                    <div class="card-subtitle">19元/月享50G通用流量+30G定向流量+300分钟通话</div>
+                    <div class="card-subtitle">19元/月享115G通用流量+30G定向流量+300分钟通话</div>
                 </div>
                 <div class="card-features">
                 </div>
@@ -685,7 +687,7 @@
             <div class="card carrier-联通" data-carrier="联通" data-region="全国可发" >
                 <div class="card-sticky">置顶</div>
                 <div class="card-header">
-                    <h3 class="card-title">联通1️⃣<span class="ke">高性价比</span></h3>
+                    <h3 class="card-title">联通1️⃣<span class="ke">高性价比</span><span class="buke">需预存</span></h3>
                     <div class="card-subtitle">19元/月享150G通用流量+600分钟通话</div>
                 </div>
                 <div class="card-features">
@@ -729,7 +731,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2258" class="apply-btn" target="_blank">立即办理</a>
+                    <a href="https://ka.kaduoduohk.com/order/index?uid=WGtXM3h3SnF3QWs9&pid=1262" class="apply-btn" target="_blank">立即办理</a>
                 </div>
             </div>
             
@@ -774,7 +776,7 @@
                 </div>
                 <div class="card-info">
                      <div class="info-row">
-                        <span class="info-label">备注：</span>
+                        <span class="info-label">备注：需蹲神卡加客服，会第一时间通知哦</span>
                         <span class="info-value"></span>
                     </div>
                 </div>
@@ -833,7 +835,7 @@
                 </div>
             </div>
 
-              <div class="card carrier-联通" data-carrier="联通" data-region="仅发省份" data-province="海南">
+              <div class="card carrier-联通 member-card" data-carrier="联通" data-region="仅发省份" data-province="海南">
                 <div class="card-header">
                     <h3 class="card-title">海南联通1️⃣会员卡-仅发海南<span class="ke">有会员</span></h3>
                     <div class="card-subtitle">29元/月享230G通用流量+100分钟通话+会员</div>
@@ -874,12 +876,12 @@
                 </div>
                 <div class="card-info">
                      <div class="info-row">
-                        <span class="info-label">备注：两年29，之后长期39</span>
+                        <span class="info-label">备注：需蹲神卡加客服，会第一时间通知哦</span>
                         <span class="info-value"></span>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="https://71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=1138" class="apply-btn" target="_blank">立即办理</a>
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2278" class="apply-btn" target="_blank">立即办理</a>
                 </div>
             </div>
 
@@ -1076,7 +1078,7 @@
                 <div class="card-info">
                      <div class="info-row">
                         <span class="info-label">备注：</span>
-                        <span class="info-value">根据实际套餐情况，可能有不同的优惠政策和限制条件</span>
+                        <span class="info-value">需蹲神卡加客服，会第一时间通知哦</span>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -1089,7 +1091,7 @@
             <!-- 广电卡 -->
             <div class="card carrier-广电  secondary-card" data-carrier="广电" data-region="全国可发">
                 <div class="card-header">
-                    <h3 class="card-title">广电1️⃣<span class="ke">可选号</span></h3>
+                    <h3 class="card-title">广电1️⃣<span class="ke">可选号</span><span class="ke">可办副卡</span></h3>
                     <div class="card-subtitle">29元/月享129G通用流量+0.15元/分钟通话</div>
                 </div>
                 <div class="card-features">
@@ -1128,12 +1130,62 @@
                 </div>
                 <div class="card-info">
                      <div class="info-row">
-                        <span class="info-label">备注：</span>
+                        <span class="info-label">备注：需蹲神卡加客服，会第一时间通知哦</span>
                         <span class="info-value"></span>
                     </div>
                 </div>
                 <div class="card-footer">
                     <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2292" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+
+             <div class="card carrier-广电  secondary-card" data-carrier="广电" data-region="全国可发">
+                <div class="card-header">
+                    <h3 class="card-title">广电2️⃣<span class="ke">可选号</span><span class="ke">可办副卡</span></h3>
+                    <div class="card-subtitle">19元/月享130G通用流量+200分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥19</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">130G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">200</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">本地归属</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">全国可发</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：一年19，之后长期29</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=1666" class="apply-btn" target="_blank">立即办理</a>
                 </div>
             </div>
 
@@ -1179,7 +1231,7 @@
                 </div>
                 <div class="card-info">
                      <div class="info-row">
-                        <span class="info-label">备注：发全国的等一段时间，可加客服蹲神卡，有合适的第一时间通知</span>
+                        <span class="info-label">备注：发全国的等一段时间，需蹲神卡加客服，会第一时间通知哦</span>
                         <span class="info-value"></span>
                     </div>
                 </div>
@@ -1259,11 +1311,15 @@
                     onlyProvinceBtn.classList.remove('expanded');
                     provinceList.style.display = 'none';
                     
-                    // 如果选择的不是全部省份，更改仅发省份按钮的文字
+                    // 更改仅发省份按钮的文字
                     if (filter !== 'all') {
                         onlyProvinceBtn.textContent = filter;
                         // 更新按钮的data-filter属性，以便后续筛选能正确识别
                         onlyProvinceBtn.dataset.filter = filter;
+                    } else {
+                        onlyProvinceBtn.textContent = '全部省份';
+                        // 更新按钮的data-filter属性，以便后续筛选能正确识别
+                        onlyProvinceBtn.dataset.filter = '全部省份';
                     }
                     
                     // 筛选卡片
@@ -1371,26 +1427,23 @@
                 
                 // 处理"仅发省份"按钮的点击事件
                 if (type === 'region') {
-                    if (filter === '仅发省份') {
-                        // 如果当前显示的是省份名称，点击则恢复为"仅发省份"
-                        if (btn.textContent !== '仅发省份') {
-                            btn.textContent = '仅发省份';
-                            btn.dataset.filter = '仅发省份';
-                            // 更新省份筛选条件为全部
-                            currentFilters.province = 'all';
-                            // 重置省份按钮状态
-                            document.querySelectorAll('[data-type="province"]').forEach(b => {
-                                b.classList.remove('active');
-                            });
-                            document.querySelector('[data-type="province"][data-filter="all"]').classList.add('active');
-                        }
+                    if (filter === '仅发省份' || provinces.includes(filter) || filter === '全部省份') {
                         // 展开/折叠省份列表
                         onlyProvinceBtn.classList.toggle('expanded');
                         provinceList.style.display = provinceList.style.display === 'none' ? 'block' : 'none';
+                        // 仅发省份或省份名称按钮，地区筛选条件固定为"仅发省份"
+                        currentFilters.region = '仅发省份';
+                        // 更新当前按钮状态
+                        document.querySelectorAll(`[data-type="${type}"]`).forEach(b => {
+                            b.classList.remove('active');
+                        });
+                        btn.classList.add('active');
                     } else {
                         // 其他地区筛选条件，隐藏省份列表
                         onlyProvinceBtn.classList.remove('expanded');
                         provinceList.style.display = 'none';
+                        // 更新当前筛选条件
+                        currentFilters.region = filter;
                         // 如果仅发省份按钮显示的是省份名称，恢复为"仅发省份"
                         if (onlyProvinceBtn.textContent !== '仅发省份') {
                             onlyProvinceBtn.textContent = '仅发省份';
@@ -1403,21 +1456,24 @@
                             });
                             document.querySelector('[data-type="province"][data-filter="all"]').classList.add('active');
                         }
+                        // 更新当前按钮状态
+                        document.querySelectorAll(`[data-type="${type}"]`).forEach(b => {
+                            b.classList.remove('active');
+                        });
+                        btn.classList.add('active');
                     }
                 } else {
                     // 其他类型的筛选条件，隐藏省份列表
                     onlyProvinceBtn.classList.remove('expanded');
                     provinceList.style.display = 'none';
+                    // 更新当前筛选条件
+                    currentFilters[type] = filter;
+                    // 更新当前按钮状态
+                    document.querySelectorAll(`[data-type="${type}"]`).forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    btn.classList.add('active');
                 }
-                
-                // 更新当前筛选条件
-                currentFilters[type] = filter;
-                
-                // 更新按钮状态
-                document.querySelectorAll(`[data-type="${type}"]`).forEach(b => {
-                    b.classList.remove('active');
-                });
-                btn.classList.add('active');
                 
                 // 筛选卡片
                 filterCards();
@@ -1470,5 +1526,4 @@
         }
     </script>
 </body>
-
 </html>
