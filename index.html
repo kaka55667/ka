@@ -9,64 +9,83 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: #f5f5f5;
             color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .container {
+            width: 100%;
             max-width: 600px;
             margin: 0 auto;
             background-color: #fff;
             min-height: 100vh;
+            padding: 0;
         }
         
         .header {
             background-color: #1E90FF;
             color: #fff;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
+            word-wrap: break-word;
         }
         
         .filters {
-            padding: 15px;
+            padding: 10px;
             background-color: #fff;
             border-bottom: 1px solid #eee;
         }
         
         .filter-section {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .filter-section h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-size: 14px;
+            margin-bottom: 8px;
             color: #666;
         }
         
         .filter-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
         
         .filter-btn {
-            padding: 8px 16px;
+            padding: 6px 12px;
             border: 1px solid #ddd;
             border-radius: 20px;
             background-color: #fff;
             color: #666;
-            font-size: 14px;
+            font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
+            white-space: nowrap;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         
         .filter-btn.active {
@@ -76,17 +95,18 @@
         }
         
         .cards-container {
-            padding: 15px;
+            padding: 10px;
         }
         
         .card {
             background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
             overflow: hidden;
             border: 1px solid #e0e0e0;
             position: relative;
+            width: 100%;
         }
         
         /* 不同运营商卡片背景色 */
@@ -109,35 +129,38 @@
         /* 置顶标识样式 */
         .card-sticky {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             background-color: #ff5722;
             color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
             font-weight: bold;
             z-index: 5;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .card-header {
             background-color: transparent;
-            padding: 15px;
+            padding: 12px;
             border-bottom: 1px solid #e0e0e0;
         }
         
         .card-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             color: #333;
+            word-wrap: break-word;
         }
         
         .card-subtitle {
-            font-size: 14px;
+            font-size: 12px;
             color: #666;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            word-wrap: break-word;
+            line-height: 1.4;
         }
         
         .card-features {
@@ -146,11 +169,11 @@
         
         .card-feature {
             display: inline-block;
-            margin-right: 15px;
-            padding: 5px 10px;
+            margin-right: 10px;
+            padding: 4px 8px;
             background-color: #e3f2fd;
-            border-radius: 15px;
-            font-size: 12px;
+            border-radius: 12px;
+            font-size: 11px;
             color: #1976d2;
         }
         
@@ -163,10 +186,11 @@
         .card-data {
             display: flex;
             justify-content: space-between;
-            padding: 15px;
+            padding: 12px;
             background-color: transparent;
             border-top: 1px solid #e0e0e0;
             margin-top: 0;
+            flex-wrap: wrap;
         }
         
         .card-data.second-row {
@@ -178,35 +202,32 @@
         .data-item {
             text-align: center;
             flex: 1;
-            min-width: 100px;
-        }
-        
-        .card-info {
-            padding: 0 15px 15px;
+            min-width: 70px;
+            margin: 4px 0;
         }
         
         .data-value {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             color: #333;
         }
         
         .data-label {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
-            margin-top: 5px;
+            margin-top: 4px;
         }
         
         .card-info {
-            padding: 15px;
+            padding: 12px;
             background-color: transparent;
         }
         
         .info-row {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 14px;
+            justify-content: flex-start;
+            margin-bottom: 8px;
+            font-size: 12px;
         }
         
         .info-label {
@@ -216,10 +237,11 @@
         .info-value {
             color: #333;
             font-weight: 500;
+            margin-left: 8px;
         }
         
         .card-footer {
-            padding: 15px;
+            padding: 12px;
             background-color: transparent;
             border-top: 1px solid #e0e0e0;
         }
@@ -227,15 +249,18 @@
         .apply-btn {
             display: block;
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             background-color: #FF6B6B;
             color: #fff;
             text-align: center;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         
         .apply-btn:hover {
@@ -243,33 +268,33 @@
         }
         
         .footer {
-            padding: 15px;
+            padding: 12px;
             background-color: #f5f5f5;
             text-align: center;
-            font-size: 12px;
+            font-size: 11px;
             color: #999;
         }
         
         .notice {
             background-color: #FFF3CD;
             color: #856404;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-size: 14px;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 12px;
         }
         
         /* 省份列表样式 */
         .province-list {
-            margin-top: 10px;
-            padding-top: 10px;
+            margin-top: 8px;
+            padding-top: 8px;
             border-top: 1px solid #eee;
         }
         
         .province-options {
-            max-height: 200px;
+            max-height: 180px;
             overflow-y: auto;
-            padding: 5px 0;
+            padding: 4px 0;
         }
         
         /* 仅发省份按钮展开状态 */
@@ -279,42 +304,35 @@
         
         .filter-btn[data-filter="仅发省份"]::after {
             content: ' ▶';
-            font-size: 12px;
-            margin-left: 5px;
+            font-size: 11px;
+            margin-left: 4px;
         }
         
         /* 可选号和不可选号样式 */
         .ke {
             display: inline-block;
-            margin-right: 15px;
-            margin-left: 10px;
-            padding: 5px 10px;
+            margin-right: 10px;
+            margin-left: 8px;
+            padding: 4px 8px;
             background-color: #ffebee;
-            border-radius: 15px;
-            font-size: 12px;
+            border-radius: 12px;
+            font-size: 11px;
             color: #d32f2f;
             font-weight: bold;
+            white-space: nowrap;
         }
         
         .buke {
             display: inline-block;
-            margin-right: 15px;
-            margin-left: 10px;
-            padding: 5px 10px;
+            margin-right: 10px;
+            margin-left: 8px;
+            padding: 4px 8px;
             background-color: #e3f2fd;
-            border-radius: 15px;
-            font-size: 12px;
+            border-radius: 12px;
+            font-size: 11px;
             color: #1976d2;
             font-weight: bold;
-        }
-        
-        /* 调整信息行对齐方式 */
-        .info-row {
-            justify-content: flex-start;
-        }
-        
-        .info-value {
-            margin-left: 10px;
+            white-space: nowrap;
         }
         
         /* 轮播图样式 */
@@ -327,12 +345,9 @@
         .carousel-container {
             position: relative;
             width: 100%;
-            /* 移除绝对定位，使用相对定位 */
-            position: relative;
         }
         
         .carousel-slide {
-            /* 移除绝对定位，使用显示/隐藏控制 */
             display: none;
         }
         
@@ -348,17 +363,17 @@
         
         .carousel-indicators {
             position: absolute;
-            bottom: 10px;
+            bottom: 8px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            gap: 8px;
             z-index: 10;
         }
         
         .indicator {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
@@ -375,16 +390,19 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 20px;
+            font-size: 16px;
             cursor: pointer;
             z-index: 20;
             transition: all 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         
         .carousel-prev:hover, .carousel-next:hover {
@@ -392,17 +410,65 @@
         }
         
         .carousel-prev {
-            left: 10px;
+            left: 8px;
         }
         
         .carousel-next {
-            right: 10px;
+            right: 8px;
         }
         
-        @media (min-width: 600px) {
-            .container {
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 16px;
             }
+            
+            .filter-btn {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+            
+            .card-title {
+                font-size: 14px;
+            }
+            
+            .card-subtitle {
+                font-size: 11px;
+            }
+            
+            .data-value {
+                font-size: 16px;
+            }
+            
+            .data-label {
+                font-size: 10px;
+            }
+            
+            .data-item {
+                min-width: 60px;
+            }
+        }
+        
+        /* 修复浏览器兼容性问题 */
+        .filter-btn, .apply-btn, .carousel-prev, .carousel-next {
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+        
+        /* 确保容器不会溢出 */
+        .container, .cards-container, .filters {
+            overflow: hidden;
+        }
+        
+        /* 确保文字不会溢出 */
+        * {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            hyphens: auto;
         }
     </style>
 </head>
@@ -466,7 +532,7 @@
             <!-- 电信卡 -->
             <div class="card carrier-电信" data-carrier="电信" data-region="全国可发">
                 <div class="card-header">
-                    <h3 class="card-title">全国电信1️</h3>
+                    <h3 class="card-title">全国电信</h3>
                     <div class="card-subtitle">29元/月享50G通用流量+30G定向流量+0.1元/分钟通话</div>
                 </div>
                 <div class="card-features">
@@ -616,10 +682,60 @@
             
             <!-- 联通卡 -->
            
+            <div class="card carrier-联通" data-carrier="联通" data-region="全国可发" >
+                <div class="card-sticky">置顶</div>
+                <div class="card-header">
+                    <h3 class="card-title">联通1️⃣<span class="ke">高性价比</span></h3>
+                    <div class="card-subtitle">19元/月享150G通用流量+600分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥19</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">150G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">600</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">随机</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">全国可发</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-28周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：先激活再发货</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2258" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
             
             <div class="card carrier-联通" data-carrier="联通" data-region="仅发省份" data-province="广东">
                 <div class="card-header">
-                    <h3 class="card-title">联通-仅发广东</h3>
+                    <h3 class="card-title">广东联通1️⃣-仅发广东</h3>
                     <div class="card-subtitle">38元/月享260G通用流量+100分钟通话</div>
                 </div>
                 <div class="card-features">
@@ -652,22 +768,275 @@
                         <div class="data-label">发货范围</div>
                     </div>
                     <div class="data-item">
-                        <div class="data-value">16-65周岁</div>
+                        <div class="data-value">18-60周岁</div>
                         <div class="data-label">年龄限制</div>
                     </div>
                 </div>
                 <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：</span>
+                        <span class="info-value"></span>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2290" class="apply-btn" target="_blank">立即办理</a>
                 </div>
             </div>
+
+            <div class="card carrier-联通" data-carrier="联通" data-region="仅发省份" data-province="浙江">
+                <div class="card-header">
+                    <h3 class="card-title">浙江联通1️⃣-仅发浙江</h3>
+                    <div class="card-subtitle">29元/月享185G通用流量+100分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥29</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">185G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">100</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">浙江</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发浙江</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：两年29，之后长期39</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=1138" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+
+              <div class="card carrier-联通" data-carrier="联通" data-region="仅发省份" data-province="海南">
+                <div class="card-header">
+                    <h3 class="card-title">海南联通1️⃣会员卡-仅发海南<span class="ke">有会员</span></h3>
+                    <div class="card-subtitle">29元/月享230G通用流量+100分钟通话+会员</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥29</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">230G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">100</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">海南</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发海南</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-30周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：两年29，之后长期39</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=1138" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+
+             <div class="card carrier-联通" data-carrier="联通" data-region="仅发省份" data-province="宁夏">
+                <div class="card-header">
+                    <h3 class="card-title">宁夏联通1️⃣-仅发宁夏</h3>
+                    <div class="card-subtitle">29元/月享161G通用流量+30G定向流量+100分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥29</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">161G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">30G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">100</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">宁夏</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发宁夏</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：半年29，之后长期39</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2280" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+
+             <div class="card carrier-联通" data-carrier="联通" data-region="仅发省份" data-province="广西">
+                <div class="card-header">
+                    <h3 class="card-title">广西联通1️⃣-仅发广西</h3>
+                    <div class="card-subtitle">19元/月享219G通用流量+100分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥19</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">219G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">100</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">广西</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发广西</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：半年19，之后长期39</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2277" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+
+             <div class="card carrier-联通" data-carrier="联通" data-region="仅发省份" data-province="重庆">
+                <div class="card-header">
+                    <h3 class="card-title">重庆联通1️⃣-仅发重庆</h3>
+                    <div class="card-subtitle">19元/月享220G通用流量+100分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥19</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">220G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">0G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">100</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">重庆</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">仅发重庆</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-60周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：半年19，之后长期39</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2258" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
             
             <!-- 移动卡 -->
             <div class="card carrier-移动 " data-carrier="移动" data-region="仅发省份" data-province="广东">
-                <div class="card-sticky">置顶</div>
                 <div class="card-header">
-                    <h3 class="card-title">移动-仅发广州深圳佛山</h3>
+                    <h3 class="card-title">广东移动1️⃣-仅发广州深圳佛山</h3>
                     <div class="card-subtitle">29元/月享120G通用流量+30G定向流量+100分钟通话</div>
                 </div>
                 <div class="card-features">
@@ -705,6 +1074,10 @@
                     </div>
                 </div>
                 <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：</span>
+                        <span class="info-value">根据实际套餐情况，可能有不同的优惠政策和限制条件</span>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2222" class="apply-btn" target="_blank">立即办理</a>
@@ -716,7 +1089,7 @@
             <!-- 广电卡 -->
             <div class="card carrier-广电  secondary-card" data-carrier="广电" data-region="全国可发">
                 <div class="card-header">
-                    <h3 class="card-title">广电卡<span class="ke">可选号</span></h3>
+                    <h3 class="card-title">广电1️⃣<span class="ke">可选号</span></h3>
                     <div class="card-subtitle">29元/月享129G通用流量+0.15元/分钟通话</div>
                 </div>
                 <div class="card-features">
@@ -754,9 +1127,64 @@
                     </div>
                 </div>
                 <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：</span>
+                        <span class="info-value"></span>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2292" class="apply-btn" target="_blank">立即办理</a>
+                </div>
+            </div>
+
+             <div class="card carrier-广电  secondary-card" data-carrier="广电" data-region="仅发省份" data-province="浙江" data-province="湖南" data-province="江西">
+               <div class="card-sticky">置顶</div>
+                <div class="card-header">
+                    <h3 class="card-title">广电350G-仅发湖南/浙江/江西<span class="ke">大流量可结转</span></h3>
+                    <div class="card-subtitle">28元/月享330G通用流量+30G定向流量+200分钟通话</div>
+                </div>
+                <div class="card-features">
+                </div>
+                <div class="card-data">
+                    <div class="data-item">
+                        <div class="data-value">¥28</div>
+                        <div class="data-label">每月月租</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">330G</div>
+                        <div class="data-label">通用流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">30G</div>
+                        <div class="data-label">定向流量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">200元</div>
+                        <div class="data-label">通话分钟</div>
+                    </div>
+                </div>
+                <div class="card-data second-row">
+                    <div class="data-item">
+                        <div class="data-value">随机</div>
+                        <div class="data-label">归属地</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">部分省份</div>
+                        <div class="data-label">发货范围</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value">18-35周岁</div>
+                        <div class="data-label">年龄限制</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                     <div class="info-row">
+                        <span class="info-label">备注：发全国的等一段时间，可加客服蹲神卡，有合适的第一时间通知</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.71haoka.com/order/index?uid=MEJUSmovNWsxMU09&pid=2265" class="apply-btn" target="_blank">立即办理</a>
                 </div>
             </div>
             
